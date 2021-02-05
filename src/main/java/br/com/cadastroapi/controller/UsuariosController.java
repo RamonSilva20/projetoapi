@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,16 +12,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import br.com.cadastroapi.model.UsuariosModel;
 import br.com.cadastroapi.repository.UsuariosRepository;
 
-@RestController
+@Controller
 public class UsuariosController {
 	
 	@Autowired
 	private UsuariosRepository repository;
-	
+
 	@GetMapping(path = "/api/usuarios")
 	public List<UsuariosModel> listaUsuarios(){
 		return repository.findAll();
@@ -37,20 +39,20 @@ public class UsuariosController {
 
 	// Salva os Registros código
 	// os dadoss sao enviados na requisicao no @requestbody
-	@PostMapping(path = "/api/usuarios/salvar")
+	@PostMapping(path = "/api/usuarios/{codigo}")
 	public UsuariosModel adicionar(@RequestBody UsuariosModel usuarios) {
 		return repository.save(usuarios);
 	}
 	
 	
 	// deleta puxando os dados pelo código id
-	@DeleteMapping(path = "/api/usuarios/deletar")
+	@DeleteMapping(path = "/api/usuarios/{codigo}")
 	public void deletar(@RequestBody UsuariosModel usuarios) {
 		repository.delete(usuarios);		
 	}
 	
 	// faz a edição do mesmo pelo código, basta passar os parametros da edição
-	@PutMapping(path = "/api/usuarios/editar")
+	@PutMapping(path = "/api/usuarios/{codigo}")
 	public UsuariosModel editar(@RequestBody UsuariosModel usuarios) {
 		return repository.save(usuarios);
 	}

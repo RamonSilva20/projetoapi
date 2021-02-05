@@ -20,31 +20,31 @@ public class UsuariosModel implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Integer codigo;
+	private Integer codigo;
 	
 	@Column(nullable = false, length = 50)
-	public String nome;
+	private String nome;
 	
 	@Column(nullable = false, length = 50)
-	public String sobrenome;
+	private String sobrenome;
 	
 	@Column(nullable = false, length = 50)
-	public String sexo;
+	private String sexo;
 	
 	@Column(nullable = false, length = 50)
-	public String dtnac;
+	private String dtnac;
 	
 	@Column(nullable = false, length = 50)
-	public String RG;
+	private String RG;
 	
 	@Column(nullable = false, length = 50)
-	public String CPF;
+	private String CPF;
 	
 	@Column(nullable = false, length = 50)
-	public String email;
+	private String email;
 	
 	@Column(nullable = false, length = 50)
-	public String telefone;
+	private String telefone;
 
 	public Integer getCodigo() {
 		return codigo;
